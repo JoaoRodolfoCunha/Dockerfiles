@@ -17,3 +17,8 @@ WORKDIR $APP_DIR
 COPY . $APP_DIR
 
 EXPOSE 4200
+
+FROM nginx:alpine
+COPY ./dist /usr/share/nginx/html
+EXPOSE 80 443
+ENTRYPOINT ["nginx","-g","daemon off;"]
